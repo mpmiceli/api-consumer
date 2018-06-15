@@ -44,7 +44,7 @@ echo " ";*/
                 <div class="navbar-header">
                     <h2 style="color:#fff; font-size: 30px;">
                         <?php 
-                            $str = $response->results[$posicion]->name->first;
+                            $str = $response->results[0]->name->first;
                             $str = ucfirst($str);
                             echo $str;
                             echo " ";

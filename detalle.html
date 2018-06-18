@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Api Consumer</title>
+    <meta name="viewport" content = "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="base/css/bootstrap.min.css">
+</head>
+<body>
+
+    <section class="main">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h2 style="color: #fff; font-size: 30px; text-align: center;">Galeria</h2>
+                </div>
+                <div class="thumbnail">
+                       <div class="caption">
+                            <h3 id = "individual_profile">
+                              
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    
+                    <p class="pull-right">
+                        <a href="#">Volver</a>
+                    </p>
+                </div>  
+            </div>
+        </div>
+    </footer>
+
+    <script src="base/js/jquery.js"></script>
+    <script src="base/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function capitalize(str1){
+            return str1.charAt(0).toUpperCase() + str1.slice(1);
+        }
+
+        let json_users = localStorage.getItem('users');
+        users = JSON.parse(json_users);
+
+        var url = new URL(window.location.href);
+        var index = url.searchParams.get("id");
+
+        const individualContainer = document.getElementById('individual_profile');
+        let individualUser = users[index];
+        console.log(individualUser);
+        function createIndividualProfile(individualUser) {
+            let divMain = document.createElement("div");
+            divMain.className = "col-xs-12 col-sm-6 col-md-3";
+            divMain.innerHTML = '<div class="thumbnail">' +
+            '<a href="#"><img src="' + individualUser.picture.large + '" alt="' + individualUser.picture.thumbnail + '"></a>' +
+            '<div class="caption">' + 
+                '<h3>' + capitalize(individualUser.name.first) + ' ' + capitalize(individualUser.name.last) + '</h3>' +
+                '<p>' + capitalize(individualUser.location.street)  + '</p>' +
+                '<p>' + capitalize(individualUser.location.city) + '</p>' +
+                '<p>' + capitalize(individualUser.location.state) + '</p>' +
+                '<a href="detalle###" class="btn btn-primary">Volver</a>' +
+            '</div>' +
+            '</div>';
+            return divMain;
+        }
+
+        let individualProfile = createIndividualProfile(individualUser);
+        individualContainer.appendChild(individualProfile);
+
+</script>
+</body>
+</html>
+
+
+  

@@ -1,0 +1,28 @@
+<html>
+
+    <body>
+        <div class="titulo" id="container">
+            hola
+        </div>
+    </body>
+
+    <style type="text/css">
+        .titulo {color: red;}
+    </style>
+
+    <script type="text/javascript">
+        //alert("holaaaa");
+
+        var container = document.getElementById('container');
+        container.style.color = 'green';
+        /*
+        container.innerHTML = '<ul>'+
+            '<li>lorem</li><li>ipsum</li>' +
+        '</ul>';
+        */
+        var p = document.createElement('p');
+        p.innerHTML = 'lorem ipsum';
+        container.appendChild(p);
+
+    </script>
+</html>
